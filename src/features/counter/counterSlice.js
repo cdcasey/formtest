@@ -1,10 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit';
 
+export const initialState = {
+  value: 0,
+};
+
 export const counterSlice = createSlice({
   name: 'counter',
-  initialState: {
-    value: 0,
-  },
+  initialState,
   reducers: {
     increment: (state) => {
       // Redux Toolkit allows us to write "mutating" logic in reducers. It
@@ -34,11 +36,18 @@ export const incrementAsync = (amount) => (dispatch) => {
   }, 1000);
 };
 
+// export const incrementAsync = (amount) => (dispatch) => {
+//   return new Promise((resolve, reject) => {
+//     setTimeout(resolve, 1000);
+//   }).then((data) => {
+//     dispatch(incrementByAmount(amount));
+//     console.log('FIRING ASYNC', data);
+//   });
+// };
+
 // The function below is called a selector and allows us to select a value from
 // the state. Selectors can also be defined inline where they're used instead of
 // in the slice file. For example: `useSelector((state) => state.counter.value)`
 export const selectCount = (state) => state.counter.value;
 
 export default counterSlice.reducer;
-
-console.dir(counterSlice);
